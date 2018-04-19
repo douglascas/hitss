@@ -1,10 +1,11 @@
 <h1 mat-dialog-title>Cellphone</h1>
 
 <div mat-dialog-content>
-  <p>What's your favorite animal?</p>
+  <p>Imagem detalhada do celular:</p>
 </div>
+{{data}}
+<img src="{{data.photo}}">
 
 <div mat-dialog-actions>
-  <button mat-button>Cancelar</button>
-  <button mat-button cdkFocusInitial>Ok</button>
+  <button mat-button (click)="close()">Fechar</button>
 </div>

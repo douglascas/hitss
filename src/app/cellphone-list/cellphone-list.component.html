@@ -1,11 +1,42 @@
-<div fxFlexFill>
-  <h3> Hitss </h3>
+<div>
+  <h3> Teste </h3>
 
-  <button (click)="add()"></button>
+  <form #ngForm="ngForm">
+    <section fxFlex fxLayout="column">
 
+      <div class="input-content" fxFlex>
+        <label for="brand">Insira a marca</label>
+        <input matInput placeholder="Insira a marca" id="brand" name="brand" [(ngModel)]="cellphone.brand" required>
+      </div>
 
-  <div *ngFor="let cellphone of cellphones">
-    <app-cellphone [cellphone]="cellphone" (click)="goToDetail(cellphone)"></app-cellphone>
-  </div>
+      <div class="input-content" fxFlex>
+        <label for="model">Insira o modelo</label>
+        <input matInput placeholder="Insira o modelo" id="model" name="model" [(ngModel)]="cellphone.model" required>
+      </div>
+
+      <div class="input-content" fxFlex>
+        <label for="price">Insira o valor</label>
+        <input matInput placeholder="Insira o valor" id="price" name="price" [(ngModel)]="cellphone.price" required>
+      </div>
+
+      <div class="input-content" fxFlex>
+        <label for="date">Insira a data</label>
+        <input matInput placeholder="Insira a data" id="date" name="date" [(ngModel)]="cellphone.date" required>
+      </div>
+
+      <div class="input-content" fxFlex>
+        <label for="photo">Insira a imagem</label>
+        <input matInput placeholder="Insira a imagem" id="photo" name="photo" [(ngModel)]="cellphone.photo">
+      </div>
+    </section>
+  </form>
+
+  <button fxFlex (click)="addOnList()">Adicionar à lista</button>
+
+  <mat-grid-list cols="4">
+    <mat-grid-tile  *ngFor="let cellphone of cellphones">
+      <app-cellphone [cellphone]="cellphone" (click)="goToDetail(cellphone)"></app-cellphone>
+    </mat-grid-tile>
+  </mat-grid-list>
 
 </div>
