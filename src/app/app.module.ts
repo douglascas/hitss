@@ -1,18 +1,24 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { CellphoneListModule } from './cellphone-list/index';
+import { CellphoneListService } from './shared/index';
+import { CellphoneDialogModule } from './cellphone-dialog/index';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    CellphoneListModule,
+    CellphoneDialogModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  declarations: [ AppComponent ],
+  providers: [ CellphoneListService ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }

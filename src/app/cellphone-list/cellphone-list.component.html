@@ -1,0 +1,11 @@
+<div fxFlexFill>
+  <h3> Hitss </h3>
+
+  <button (click)="add()"></button>
+
+
+  <div *ngFor="let cellphone of cellphones">
+    <app-cellphone [cellphone]="cellphone" (click)="goToDetail(cellphone)"></app-cellphone>
+  </div>
+
+</div>

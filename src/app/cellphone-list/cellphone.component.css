@@ -1,0 +1,15 @@
+.template-cellphone {
+  background-color: #474760;
+  border-radius: 5px;
+  width: 250px;
+  height: 300px;
+  padding: 10px;
+  margin: 15px;
+}
+
+.template-cellphone p {
+  color: white;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: bold;
+}
+
