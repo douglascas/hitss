@@ -1,10 +1,13 @@
 .template-cellphone {
   background-color: #474760;
   border-radius: 5px;
-  width: 250px;
+  width: 230px;
   height: 350px;
   padding: 10px;
-  margin: 15px;
+}
+
+app-cellphone {
+  margin: 10px;
 }
 
 .input-content { 
@@ -17,10 +20,6 @@
   margin: 4px;
 }
 
-.content-cellphone {
-  overflow: hidden;
-  white-space: nowrap;
-}
 
 .input-cellphone label {
   width: 300px;

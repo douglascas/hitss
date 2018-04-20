@@ -1,15 +1,15 @@
 export class Cellphone {
 
-  model: String;
+  model: string;
 
-  code: String;
+  code: string;
 
   price: number;
 
-  brand: String;
+  brand: string;
 
-  photo: String;
+  photo: string;
 
-  date: String;
+  date: string;
 
 }

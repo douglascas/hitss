@@ -7,7 +7,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { CellphoneListComponent } from './cellphone-list.component';
 import { CellphoneComponent } from './cellphone.component';
 import { RouterModule } from '@angular/router';
-import { MatInputModule, MatIconModule, MatGridListModule } from '@angular/material';
+import { MatInputModule, MatIconModule, MatGridListModule, MatButtonModule } from '@angular/material';
+import { CellphoneDetailComponent } from './cellphone-detail.component';
+import { CellphoneDialogComponent } from '../cellphone-dialog/index';
 
 @NgModule({
   imports: [
@@ -17,13 +19,15 @@ import { MatInputModule, MatIconModule, MatGridListModule } from '@angular/mater
     FormsModule,
     RouterModule,
     MatInputModule,
+    MatButtonModule,
     MatIconModule,
     FlexLayoutModule,
     FormsModule,
     MatGridListModule,
   ],
   exports: [CellphoneListComponent],
-  declarations: [CellphoneListComponent, CellphoneComponent],
+  declarations: [CellphoneListComponent, CellphoneComponent, CellphoneDetailComponent],
+  entryComponents: [CellphoneDialogComponent]
 })
 export class CellphoneListModule { }
 

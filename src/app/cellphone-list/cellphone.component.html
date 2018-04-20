@@ -1,5 +1,4 @@
 <div class="template-cellphone" fxFlex>
-
   <div class="image-content">
     <img src="{{cellphone.photo}}" (click)="photoDetail()">
     <mat-hint class="text-photo" align="end">A URL da imagem original está dando 404. Coloquei outra para demonstrar.</mat-hint>
@@ -9,5 +8,7 @@
       <p>Valor: R${{cellphone.price}}</p>
       <p>Data: {{cellphone.date}}</p>
     </div>
+    <button (click)="remove()">Remover</button>
+    <button (click)="goToDetail()">Detalhe</button>
   </div>
 </div>

@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CellphoneListService, Cellphone } from '../shared/index';
-import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { CellphoneDialogComponent } from '../cellphone-dialog/index';
 import { tap } from 'rxjs/operators';
 import { FormBuilder, NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cellphone-list',
@@ -22,6 +22,8 @@ export class CellphoneListComponent implements OnInit {
 
   constructor(
     private readonly _service: CellphoneListService,
+    private readonly dialog: MatDialog,
+    private readonly router: Router,
 
   ) { }
 
@@ -33,13 +35,17 @@ export class CellphoneListComponent implements OnInit {
   }
 
   goToDetail(cellphone: Cellphone) {
-    console.log(cellphone);
+    this.dialog.open(CellphoneDialogComponent, {data: cellphone})
+      .afterClosed();
   }
 
-  addOnList() {
-    // Permite que a cada inserção, crie um novo objeto Cellphone.
+
+  addOnList(): void {
+    // Permite que a cada inserção, crie um novo objeto Cellphone sem modificar a referência para o `this.cellphone`.
     const newer = Object.assign(new Cellphone(), this.cellphone);
-    this._service.add(newer).subscribe(() => this.ngForm.reset());
+    this._service.add(newer)
+      .subscribe(() => this.ngForm.reset());
   }
+
 
 }

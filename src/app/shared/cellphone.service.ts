@@ -34,6 +34,8 @@ export const mock: Cellphone[] = [{
 @Injectable()
 export class CellphoneListService {
 
+  cellphones = mock;
+
   constructor() { }
 
   // Método no qual consumiria os serviços de `/claro/mobile` e retornaria todos os celulares
@@ -46,11 +48,16 @@ export class CellphoneListService {
     return of(null);
   }
 
+  // Insere na lista o item que eu criei
   add(cellphone: Cellphone): Observable<Cellphone[]> {
-    mock.push(cellphone);
-    return of(mock);
-
+    this.cellphones.push(cellphone);
+    return of(this.cellphones);
   }
 
+  // Atribui o valor da lista sem o item que eu removi à própria lista.
+  remove(cellphone: Cellphone) {
+    this.cellphones = mock.filter(c => c.code !== cellphone.code);
+    return this.cellphones;
+  }
 
 }
