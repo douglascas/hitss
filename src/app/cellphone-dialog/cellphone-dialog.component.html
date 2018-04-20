@@ -2,9 +2,35 @@
 
 <div mat-dialog-content>
   <p>Imagem detalhada do celular:</p>
-  <img src="{{data.photo}}">
+
+  <form #ngForm="ngForm">
+    <section fxFlex fxLayout="column" fxLayoutGap="8px">
+      <div fxFlex>
+        <label for="brand">Insira a marca</label>
+        <input matInput placeholder="Insira a marca" id="brand" name="brand" [(ngModel)]="cellphone.brand" required>
+      </div>
+      <div fxFlex>
+        <label for="model">Insira o modelo</label>
+        <input matInput placeholder="Insira o modelo" id="model" name="model" [(ngModel)]="cellphone.model" required>
+      </div>
+      <div fxFlex>
+        <label for="price">Insira o valor</label>
+        <input matInput placeholder="Insira o valor" id="price" name="price" [(ngModel)]="cellphone.price" required>
+      </div>
+      <div fxFlex>
+        <label for="date">Insira a data</label>
+        <input mat-input placeholder="Insira a data" id="date" name="date" [(ngModel)]="cellphone.date" required>
+      </div>
+      <div fxFlex>
+        <label for="photo">Insira a imagem</label>
+        <input matInput placeholder="Insira a imagem" id="photo" name="photo" [(ngModel)]="cellphone.photo" required>
+      </div>
+    </section>
+    <div fxFlex="70"></div>
+  </form>
 </div>
 
 <div mat-dialog-actions>
   <button mat-button (click)="close()">Fechar</button>
+  <button mat-button (click)="save()">Salvar</button>
 </div>

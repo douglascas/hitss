@@ -2,14 +2,14 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { CellphoneListService, Cellphone } from '../shared/index';
 import { MatDialog } from '@angular/material';
 import { CellphoneDialogComponent } from '../cellphone-dialog/index';
-import { tap } from 'rxjs/operators';
+import { tap, filter } from 'rxjs/operators';
 import { FormBuilder, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cellphone-list',
   templateUrl: './cellphone-list.component.html',
-  styleUrls: ['./cellphone.component.css']
+  styleUrls: ['./cellphone.component.scss']
 })
 export class CellphoneListComponent implements OnInit {
 
@@ -35,10 +35,14 @@ export class CellphoneListComponent implements OnInit {
   }
 
   goToDetail(cellphone: Cellphone) {
-    this.dialog.open(CellphoneDialogComponent, {data: cellphone})
-      .afterClosed();
+    this.dialog.open(CellphoneDialogComponent, { data: cellphone, width: '500px', height: '500px' })
+      .afterClosed()
+      .pipe(filter(response => !!response))
+      .subscribe({
+        next: (response) => Object.assign(cellphone, response),
+      })
+      ;
   }
-
 
   addOnList(): void {
     // Permite que a cada inserção, crie um novo objeto Cellphone sem modificar a referência para o `this.cellphone`.

@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-cellphone',
   templateUrl: './cellphone.component.html',
-  styleUrls: ['cellphone.component.css']
+  styleUrls: ['cellphone.component.scss']
 })
 export class CellphoneComponent {
 
@@ -18,15 +18,14 @@ export class CellphoneComponent {
     private readonly _dialog: MatDialog,
     private readonly _service: CellphoneListService,
     private readonly router: Router,
-  ) {}
+  ) { }
 
   photoDetail(): void {
-    this._dialog.open(CellphoneDialogComponent, {data: this.cellphone.model, maxHeight: '400px', maxWidth: '400px'});
+    this._dialog.open(CellphoneDialogComponent, { data: this.cellphone, maxHeight: '400px', maxWidth: '400px' });
   }
 
   remove(): void {
     this._service.remove(this.cellphone);
-      // .subscribe(() => this.router.navigate(['..']));
   }
 
   goToDetail() {

@@ -4,36 +4,31 @@
   <form #ngForm="ngForm">
     <section fxFlex fxLayout="column" fxLayoutGap="8px">
       <div fxFlex>
-        <label for="brand">Insira a marca</label>
-        <input matInput placeholder="Insira a marca" id="brand" name="brand" [(ngModel)]="cellphone.brand" required>
+        <input placeholder="Insira a marca" id="brand" name="brand" [(ngModel)]="cellphone.brand" required>
       </div>
       <div fxFlex>
-        <label for="model">Insira o modelo</label>
-        <input matInput placeholder="Insira o modelo" id="model" name="model" [(ngModel)]="cellphone.model" required>
+        <input placeholder="Insira o modelo" id="model" name="model" [(ngModel)]="cellphone.model" required>
       </div>
       <div fxFlex>
-        <label for="price">Insira o valor</label>
-        <input matInput placeholder="Insira o valor" id="price" name="price" [(ngModel)]="cellphone.price" required>
+        <input placeholder="Insira o valor" id="price" name="price" [(ngModel)]="cellphone.price" required>
       </div>
       <div fxFlex>
-        <label for="date">Insira a data</label>
-        <input matInput placeholder="Insira a data" id="date" name="date" [(ngModel)]="cellphone.date" required>
+        <input mat-input placeholder="Insira a data" id="date" name="date" [(ngModel)]="cellphone.date" required>
       </div>
       <div fxFlex>
-        <label for="photo">Insira a imagem</label>
-        <input matInput placeholder="Insira a imagem" id="photo" name="photo" [(ngModel)]="cellphone.photo" required>
+        <input placeholder="Insira a imagem" id="photo" name="photo" [(ngModel)]="cellphone.photo" required>
+      </div>
+      <!-- Botão só será habilitado caso todos os itens do formulário estejam preenchidos. -->
+      <div style="width: 300px">
+        <button (click)="addOnList()" [disabled]="!ngForm.valid">Adicionar à lista</button>
       </div>
     </section>
     <div fxFlex="70"></div>
   </form>
-  
-  <!-- Botão só será habilitado caso todos os itens do formulário estejam preenchidos. -->
-  <button (click)="addOnList()" [disabled]="!ngForm.valid" fxFlex>Adicionar à lista</button>
 
   <div fxLayout="row" fxLayoutWrap="wrap" fxLayoutGap="10px">
     <app-cellphone *ngFor="let cellphone of cellphones" [cellphone]="cellphone"></app-cellphone>
   </div>
-
 
   <div>
     <h3>Resultado esperado do retorno da API</h3>
