@@ -10,7 +10,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatDialogModule,
     BrowserAnimationsModule
   ],
-  exports: [CellphoneDialogComponent],
   declarations: [CellphoneDialogComponent],
   entryComponents: [CellphoneDialogComponent]
 })
