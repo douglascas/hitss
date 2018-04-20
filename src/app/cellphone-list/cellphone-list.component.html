@@ -3,25 +3,36 @@
 
   <form #ngForm="ngForm">
     <section fxFlex fxLayout="column" fxLayoutGap="8px">
+
+      <div>
+        <mat-form-field>
+          <input i18n-placeholder placeholder="Insira a marca" name="brand" [(ngModel)]="cellphone.brand" matInput required>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input i18n-placeholder placeholder="Insira o modelo" name="model" [(ngModel)]="cellphone.model" matInput required>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input i18n-placeholder placeholder="Insira o preço" name="price" [(ngModel)]="cellphone.price" matInput required>
+        </mat-form-field>
+      </div>
+
       <div fxFlex>
-        <input placeholder="Insira a marca" id="brand" name="brand" [(ngModel)]="cellphone.brand" required>
+        <mat-form-field fxFLex> 
+          <input i18n-placeholder placeholder="Insira a data" name="date" [(ngModel)]="cellphone.date" matInput required>
+        </mat-form-field>
+
+        <mat-form-field fxFlex>
+          <input i18n-placeholder placeholder="Insira a URL da foto" name="photo" [(ngModel)]="cellphone.photo" matInput required>
+        </mat-form-field>
+
+        <!-- Botão só será habilitado caso todos os itens do formulário estejam preenchidos. -->
+        <div style="width: 300px">
+          <button (click)="addOnList()" [disabled]="!ngForm.valid">Adicionar à lista</button>
+        </div>
       </div>
-      <div fxFlex>
-        <input placeholder="Insira o modelo" id="model" name="model" [(ngModel)]="cellphone.model" required>
-      </div>
-      <div fxFlex>
-        <input placeholder="Insira o valor" id="price" name="price" [(ngModel)]="cellphone.price" required>
-      </div>
-      <div fxFlex>
-        <input mat-input placeholder="Insira a data" id="date" name="date" [(ngModel)]="cellphone.date" required>
-      </div>
-      <div fxFlex>
-        <input placeholder="Insira a imagem" id="photo" name="photo" [(ngModel)]="cellphone.photo" required>
-      </div>
-      <!-- Botão só será habilitado caso todos os itens do formulário estejam preenchidos. -->
-      <div style="width: 300px">
-        <button (click)="addOnList()" [disabled]="!ngForm.valid">Adicionar à lista</button>
-      </div>
+
     </section>
     <div fxFlex="70"></div>
   </form>

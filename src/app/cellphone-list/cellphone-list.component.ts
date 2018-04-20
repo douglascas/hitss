@@ -34,8 +34,8 @@ export class CellphoneListComponent implements OnInit {
     });
   }
 
-  goToDetail(cellphone: Cellphone) {
-    this.dialog.open(CellphoneDialogComponent, { data: cellphone, width: '500px', height: '500px' })
+  goToDetail(cellphone: Cellphone): void {
+    this.dialog.open(CellphoneDialogComponent, { data: cellphone, width: '500px', height: '400px' })
       .afterClosed()
       .pipe(filter(response => !!response))
       .subscribe({

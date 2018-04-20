@@ -5,7 +5,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 @Component({
   selector: 'app-cellphone-dialog',
   templateUrl: './cellphone-dialog.component.html',
-  styleUrls: ['./cellphone-dialog.component.scss'],
+  styleUrls: ['cellphone-dialog.component.scss']
 })
 export class CellphoneDialogComponent {
 
