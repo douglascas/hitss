@@ -1,3 +1,13 @@
+# Sobre o projeto 
+
+Foi desenvolvido um CRUD simples baseados em um mock simulando os serviços. 
+A parte gráfica não foi priorizada pois tive alguns problemas com alguns temas do Angular Material no decorrer do projeto.
+O código possui alguns comentários sobre o método ou trecho de código no qual está abaixo dele.
+As urls de imagens que foram enviadas no mock não estavam funcionando. Substitui para poder mostra-las dentro do componente.
+
+Qualquer observação, favor entrar em contato! :)
+
+
 # HitssProject
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.5.
