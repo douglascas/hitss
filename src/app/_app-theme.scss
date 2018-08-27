@@ -1,0 +1,15 @@
+// @import './models/models-theme';
+
+@mixin app-theme($theme) {
+  $background: map-get($theme, background);
+
+  // @include app-models-theme($theme);
+
+  body {
+    background: map-get($background, background);
+  }
+}
+
+@mixin app-typography($typography) {
+  // @include app-models-typography($typography);
+}

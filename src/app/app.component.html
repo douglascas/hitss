@@ -1,1 +1,11 @@
-<router-outlet></router-outlet>
+<mat-toolbar color="accent" class="header mat-elevation-z2">
+  <ng-container i18n>Projeto</ng-container>
+  <div fxFlex></div>
+  <a mat-mini-fab href="https://github.com/douglascas/" target="_blank" color="default">
+    <mat-icon color="accent" i18n-matTooltip matTooltip="Github">link</mat-icon>
+  </a>
+</mat-toolbar>
+
+<section class="content" fxFlex>
+  <router-outlet></router-outlet>
+</section>

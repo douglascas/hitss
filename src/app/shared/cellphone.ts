@@ -13,4 +13,6 @@ export class Cellphone {
 
   date: string;
 
+  decription: string;
+
 }

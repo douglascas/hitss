@@ -1,49 +1,72 @@
-<div fxFlexFill>
-  <h3> Input de cadastro </h3>
+<div class="content">
+  <div [formGroup]="form">
+    <mat-card>
+      <div fxFlex fxLayout="row" fxLayoutGap="8px">
 
-  <form #ngForm="ngForm">
-    <section fxFlex fxLayout="column" fxLayoutGap="8px">
+        <div fxFlex>
+          <mat-icon color="accent" style="margin: auto">phone_iphone</mat-icon>
+        </div>
 
-      <div>
-        <mat-form-field>
-          <input i18n-placeholder placeholder="Insira a marca" name="brand" [(ngModel)]="cellphone.brand" matInput required>
-        </mat-form-field>
+        <div fxLayout="column" fxFlex>
+          <mat-form-field fxFlex>
+            <input i18n-placeholder placeholder="Marca" name="brand" type="text" formControlName="brand" matInput required>
+          </mat-form-field>
 
-        <mat-form-field>
-          <input i18n-placeholder placeholder="Insira o modelo" name="model" [(ngModel)]="cellphone.model" matInput required>
-        </mat-form-field>
+          <mat-form-field fxFlex>
+            <input i18n-placeholder placeholder="Modelo" name="model" type="text" formControlName="model" matInput required>
+          </mat-form-field>
 
-        <mat-form-field>
-          <input i18n-placeholder placeholder="Insira o preço" name="price" [(ngModel)]="cellphone.price" matInput required>
-        </mat-form-field>
-      </div>
+          <mat-form-field fxFlex>
+            <span matPrefix i18n>R$&nbsp;</span>
+            <input formControlName="price" i18n-placeholder placeholder="000" matInput required>
+            <span matSuffix i18n>,00</span>
+          </mat-form-field>
 
-      <div fxFlex>
-        <mat-form-field fxFLex> 
-          <input i18n-placeholder placeholder="Insira a data" name="date" [(ngModel)]="cellphone.date" matInput required>
-        </mat-form-field>
+          <mat-form-field fxFlex>
+            <input i18n-placeholder placeholder="Data" name="date" formControlName="release" matInput required>
+          </mat-form-field>
 
-        <mat-form-field fxFlex>
-          <input i18n-placeholder placeholder="Insira a URL da foto" name="photo" [(ngModel)]="cellphone.photo" matInput required>
-        </mat-form-field>
-
-        <!-- Botão só será habilitado caso todos os itens do formulário estejam preenchidos. -->
-        <div style="width: 300px">
-          <button (click)="addOnList()" [disabled]="!ngForm.valid">Adicionar à lista</button>
+          <mat-form-field fxFlex>
+            <input i18n-placeholder placeholder="URL da foto" name="photo" type="text" formControlName="photo" matInput required>
+          </mat-form-field>
         </div>
       </div>
 
-    </section>
+      <div fxFlex></div>
+      <div fxLayoutAlign="end">
+        <button mat-button color="primary" (click)="form.reset()"><span i18n>Limpar campos</span></button>
+        <button mat-button color="accent" (click)="addOnList()" [disabled]="!form.valid"><span i18n>Adicionar à lista</span></button>
+      </div>
+    </mat-card>
     <div fxFlex="70"></div>
-  </form>
-
-  <div fxLayout="row" fxLayoutWrap="wrap" fxLayoutGap="10px">
-    <app-cellphone *ngFor="let cellphone of cellphones" [cellphone]="cellphone"></app-cellphone>
   </div>
 
-  <div>
-    <h3>Resultado esperado do retorno da API</h3>
-    {{cellphones | json}}
+  <div style="margin-top: 8px" fxLayout="row wrap" fxLayoutGap="8px">
+    <mat-accordion *ngIf="cellphones.length; else cellphonesCallBack" fxFlex>
+      <mat-expansion-panel multi *ngFor="let cellphone of cellphones">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <span class="mat-subheading-3">{{cellphone.brand}} - {{cellphone.model}}</span>
+            <div fxFlex></div>
+            <button mat-button (click)="remove(cellphone)"></button>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div fxLayout="row" style="height: 150px">
+          <div fxFlex>
+            <img style="max-width: 200px; max-height: 200px" src="{{cellphone.photo}}">
+          </div>
+          <div fxFlex="80" style="overflow: auto; padding: 8px; word-wrap: normal">
+            <!-- <p>{{cellphone.date | date:'dd/MM/yyyy'}}</p> -->
+            <p style="text-align: justify">{{cellphone.decription}}</p>
+          </div>
+        </div>
+        <p>{{cellphone.model}}</p>
+        <p>{{cellphone.price}}</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <ng-template #cellphonesCallBack>
+      <p i18n>Não há celulares adicionados.</p>
+    </ng-template>
   </div>
 
 </div>

@@ -1,40 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/theming";
+@import "app/app-theme";
 
-$primary: mat-palette($mat-lime, 500);
-$accent:  mat-palette($mat-lime, 500, A200, A400);
-$warn:    mat-palette($mat-red, 500);
-
-$theme: mat-light-theme($primary, $accent, $warn);
+$theme: mat-light-theme(mat-palette($mat-amber), mat-palette($mat-indigo), mat-palette($mat-red));
+$typography: mat-typography-config();
 
 @include mat-core();
 @include angular-material-theme($theme);
+@include app-theme($theme);
+@include app-typography($typography);
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
 
 body {
-    font-family: $mat-font-family;
-    font-weight: normal;
-}
-
-h1, h2, h3, h4 {
-    font-weight: normal;
-}
-
-button {
-  font-family: Arial;
-  background-color: #eee;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  cursor: hand;
-}
-
-button:hover {
-  background-color: #cfd8dc;
-}
-
-button:disabled {
-  background-color: #eee;
-  color: #aaa;
-  cursor: auto;
+  margin: 0;
+  padding: 0;
 }

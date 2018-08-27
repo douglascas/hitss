@@ -7,22 +7,27 @@ import { AppComponent } from './app.component';
 import { CellphoneListModule } from './cellphone-list/index';
 import { CellphoneListService } from './shared/index';
 import { CellphoneDialogModule } from './cellphone-dialog/index';
-import { MatInputModule, MatDialogModule } from '@angular/material';
-
+import { MatInputModule, MatDialogModule, MatToolbarModule, MatIconModule, MatButtonModule, MatTooltipModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   imports: [
     BrowserModule,
     MatInputModule,
+    MatIconModule,
+    MatButtonModule,
     MatDialogModule,
+    MatToolbarModule,
+    MatTooltipModule,
     FormsModule,
+    FlexLayoutModule,
     AppRoutingModule,
     HttpClientModule,
     CellphoneListModule,
     CellphoneDialogModule,
   ],
-  declarations: [ AppComponent ],
-  providers: [ CellphoneListService ],
-  bootstrap: [ AppComponent ]
+  declarations: [AppComponent],
+  providers: [CellphoneListService],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

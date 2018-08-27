@@ -1,9 +1,9 @@
+import { filter } from 'rxjs/operators';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CellphoneListService, Cellphone } from '../shared/index';
 import { MatDialog } from '@angular/material';
 import { CellphoneDialogComponent } from '../cellphone-dialog/index';
-import { tap, filter } from 'rxjs/operators';
-import { FormBuilder, NgForm } from '@angular/forms';
+import { NgForm, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -17,21 +17,29 @@ export class CellphoneListComponent implements OnInit {
 
   cellphone: Cellphone;
 
-  @ViewChild('ngForm')
-  ngForm: NgForm;
+  form: FormGroup;
 
   constructor(
+    fb: FormBuilder,
     private readonly _service: CellphoneListService,
     private readonly dialog: MatDialog,
     private readonly router: Router,
-
-  ) { }
+  ) {
+    this.form = fb.group({
+      brand: null,
+      model: null,
+      price: null,
+      release: null,
+      photo: null,
+    });
+  }
 
   ngOnInit() {
-    this._service.list().subscribe(cellphone => {
-      this.cellphones = cellphone;
-      this.cellphone = new Cellphone();
-    });
+    this._service.list()
+      .subscribe(cellphone => {
+        this.cellphones = cellphone;
+        this.cellphone = new Cellphone();
+      });
   }
 
   goToDetail(cellphone: Cellphone): void {
@@ -48,8 +56,12 @@ export class CellphoneListComponent implements OnInit {
     // Permite que a cada inserção, crie um novo objeto Cellphone sem modificar a referência para o `this.cellphone`.
     const newer = Object.assign(new Cellphone(), this.cellphone);
     this._service.add(newer)
-      .subscribe(() => this.ngForm.reset());
+      .subscribe(() => this.form.reset());
   }
 
+  remove(cellphone: Cellphone): void {
+    this._service.remove(cellphone);
+  }
 
 }
+
