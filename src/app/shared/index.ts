@@ -1,2 +1,2 @@
-export * from './cellphone';
+export * from './phone';
 export * from './cellphone.service';

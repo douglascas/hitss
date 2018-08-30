@@ -1,7 +1,7 @@
-import { CellphoneDialogComponent } from './../cellphone-dialog/cellphone-dialog.component';
+import { CellphoneDialogComponent } from '../cellphone-dialog/index';
 import { MatDialog } from '@angular/material';
-import { Component, OnInit, Input } from '@angular/core';
-import { Cellphone, CellphoneListService } from '../shared/index';
+import { Component, Input } from '@angular/core';
+import { Phone, CellphoneListService } from '../shared/index';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class CellphoneComponent {
 
   @Input()
-  cellphone: Cellphone;
+  cellphone: Phone;
 
   constructor(
     private readonly _dialog: MatDialog,

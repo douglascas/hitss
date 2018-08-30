@@ -1,16 +1,26 @@
+import { HomeComponent } from './home/index';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CellphoneListComponent } from './cellphone-list/index';
-import { CellphoneDetailComponent } from './cellphone-list/cellphone-detail.component';
+import { CellphoneDetailComponent, CellphoneListComponent } from './cellphone-list/index';
 
 const routes: Routes = [
+
   {
     path: '',
+    redirectTo: '/home',
+    pathMatch: 'full',
+  },
+  {
+    path: 'home',
+    component: HomeComponent,
+  },
+  {
+    path: 'galery',
     component: CellphoneListComponent,
   },
   {
     path: 'detail/:code',
-    component: CellphoneDetailComponent
+    component: CellphoneDetailComponent,
   },
 ];
 

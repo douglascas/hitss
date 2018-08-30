@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { CellphoneListService, Cellphone } from '../shared/index';
+import { CellphoneListService, Phone } from '../shared/index';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class CellphoneDetailComponent {
 
   @Input()
-  cellphone: Cellphone;
+  cellphone: Phone;
 
   constructor(
     private readonly _service: CellphoneListService,

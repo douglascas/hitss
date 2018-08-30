@@ -1,5 +1,5 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -10,7 +10,6 @@ import { RouterModule } from '@angular/router';
 import { MatInputModule, MatIconModule, MatButtonModule, MatCardModule, MatExpansionModule } from '@angular/material';
 import { CellphoneDetailComponent } from './cellphone-detail.component';
 import { CellphoneDialogComponent } from '../cellphone-dialog/index';
-
 
 @NgModule({
   imports: [

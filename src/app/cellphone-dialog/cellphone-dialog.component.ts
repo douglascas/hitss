@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { CellphoneListService, Cellphone } from '../shared/index';
+import { CellphoneListService, Phone } from '../shared/index';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 
 @Component({
@@ -9,14 +9,14 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 })
 export class CellphoneDialogComponent {
 
-  cellphone: Cellphone;
+  cellphone: Phone;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: Cellphone,
+    @Inject(MAT_DIALOG_DATA) public data: Phone,
     private readonly _service: CellphoneListService,
     private readonly _dialog: MatDialogRef<CellphoneDialogComponent>,
   ) {
-    this.cellphone = Object.assign(new Cellphone(), data);
+    this.cellphone = Object.assign(new Phone(), data);
   }
 
   save() {
@@ -24,7 +24,7 @@ export class CellphoneDialogComponent {
     this.close(this.cellphone);
   }
 
-  close(cellphone?: Cellphone) {
+  close(cellphone?: Phone) {
     this._dialog.close(cellphone);
   }
 

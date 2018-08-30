@@ -9,25 +9,29 @@
 
         <div fxLayout="column" fxFlex>
           <mat-form-field fxFlex>
-            <input i18n-placeholder placeholder="Marca" name="brand" type="text" formControlName="brand" matInput required>
+            <input matInput name="brand" type="text" formControlName="brand" i18n-placeholder placeholder="Marca" required>
           </mat-form-field>
 
           <mat-form-field fxFlex>
-            <input i18n-placeholder placeholder="Modelo" name="model" type="text" formControlName="model" matInput required>
+            <input matInput name="model" type="text" formControlName="model" i18n-placeholder placeholder="Modelo" required>
           </mat-form-field>
 
           <mat-form-field fxFlex>
             <span matPrefix i18n>R$&nbsp;</span>
-            <input formControlName="price" i18n-placeholder placeholder="000" matInput required>
+            <input matInput formControlName="price" i18n-placeholder placeholder="000" required>
             <span matSuffix i18n>,00</span>
           </mat-form-field>
 
           <mat-form-field fxFlex>
-            <input i18n-placeholder placeholder="Data" name="date" formControlName="release" matInput required>
+            <input matInput name="date" formControlName="release" i18n-placeholder placeholder="Data" required>
           </mat-form-field>
 
           <mat-form-field fxFlex>
-            <input i18n-placeholder placeholder="URL da foto" name="photo" type="text" formControlName="photo" matInput required>
+            <input matInput name="photo" type="text" formControlName="photo" i18n-placeholder placeholder="URL da foto" pattern="/^(http[s]?:\/\/){0,1}(www\.){0,1}[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,5}[\.]{0,1}/"
+              required>
+            <mat-error>
+              <span i18n>Insira uma Url válida.</span>
+            </mat-error>
           </mat-form-field>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cellphone } from './cellphone';
+import { Phone } from './phone';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 
@@ -15,7 +15,8 @@ export const lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. D
   'interdum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur rhoncus' +
   'ornare massa, ac tincidunt purus iaculis id. Etiam lectus lacus, malesuada non ultrices id, viverra a tortor.';
 
-export const mock: Cellphone[] = [{
+export const mock: Phone[] = [{
+  'id': 1,
   'price': 1990,
   'code': '653d9688-af26-4ff1-b1a6-58c474fba27f',
   'model': 'Moto G5 Plus',
@@ -26,6 +27,7 @@ export const mock: Cellphone[] = [{
   'date': '26/11/2015',
   'decription': lorem
 }​, {
+  'id': 2,
   'price': 3990,
   'code': 'd10e528f-9f2c-4271-9dc1-967bef224695​',
   'model': 'IPhone 7 Plus',
@@ -36,6 +38,7 @@ export const mock: Cellphone[] = [{
   'date': '25/12/2015',
   'decription': lorem
 }, {
+  'id': 3,
   'price': 699,
   'code': 'ba59f136-9d1f-42bf-8f4a-826dca8dde5b​',
   'model': 'J7',
@@ -54,29 +57,31 @@ export class CellphoneListService {
   constructor() { }
 
   // Método no qual consumiria os serviços de `/claro/mobile` e retornaria todos os celulares
-  list(): Observable<Cellphone[]> {
-    return of(mock as Cellphone[]);
+  list(): Observable<Phone[]> {
+    return of(mock as Phone[]);
   }
 
   // Método no qual consumiria os serviços de `/claro/mobile/{code}` e retornaria um celular específico
-  get(): Observable<Cellphone> {
+  get(): Observable<Phone> {
     return of(null);
   }
 
   // Insere na lista o item que eu criei
-  add(cellphone: Cellphone): Observable<Cellphone[]> {
+  add(cellphone: Phone): Observable<Phone[]> {
     this.cellphones.push(cellphone);
     return of(this.cellphones);
   }
 
   // Insere na lista o item que eu criei
-  update(data: Cellphone, cellphone: Cellphone) {
-    this.cellphones.filter(a => a.code === data.code)
+  update(data: Phone, cellphone: Phone) {
+    this.cellphones
+      .filter(a => a.code === data.code)
       .map(a => Object.assign(a, cellphone));
   }
 
-  remove(cellphone: Cellphone) {
-    this.cellphones.splice(this.cellphones.indexOf(cellphone), 1);
+  remove(cellphone: Phone) {
+    this.cellphones
+      .splice(this.cellphones.indexOf(cellphone), 1);
   }
 
 }

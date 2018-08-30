@@ -1,0 +1,16 @@
+<div class="menu" [formGroup]="loginForm" (click)="$event.stopPropagation()">
+  
+  <mat-form-field>
+    <input matInput formControlName="user" i18n-placeholder placeholder="Usuário" type="text" required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput formControlName="password" i18n-placeholder placeholder="Senha" type="password" required>
+  </mat-form-field>
+
+  <div fxLayout="row" fxLayoutGap="8px">
+    <button fxFlex mat-menu-item (click)="loginForm.reset()"><span i18n>Limpar</span></button>
+    <button fxFlex mat-menu-item [disabled]="!loginForm.valid" (click)="login()"><span i18n>Entrar</span></button>
+  </div>
+
+</div>

@@ -1,10 +1,9 @@
 import { filter } from 'rxjs/operators';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { CellphoneListService, Cellphone } from '../shared/index';
+import { Component, OnInit } from '@angular/core';
+import { CellphoneListService, Phone } from '../shared/index';
 import { MatDialog } from '@angular/material';
 import { CellphoneDialogComponent } from '../cellphone-dialog/index';
-import { NgForm, FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-cellphone-list',
@@ -13,17 +12,14 @@ import { Router } from '@angular/router';
 })
 export class CellphoneListComponent implements OnInit {
 
-  cellphones: Cellphone[] = [];
-
-  cellphone: Cellphone;
-
+  cellphones: Phone[] = [];
+  cellphone: Phone;
   form: FormGroup;
 
   constructor(
     fb: FormBuilder,
     private readonly _service: CellphoneListService,
     private readonly dialog: MatDialog,
-    private readonly router: Router,
   ) {
     this.form = fb.group({
       brand: null,
@@ -38,30 +34,28 @@ export class CellphoneListComponent implements OnInit {
     this._service.list()
       .subscribe(cellphone => {
         this.cellphones = cellphone;
-        this.cellphone = new Cellphone();
+        this.cellphone = new Phone();
       });
   }
 
-  goToDetail(cellphone: Cellphone): void {
+  goToDetail(cellphone: Phone): void {
     this.dialog.open(CellphoneDialogComponent, { data: cellphone, width: '500px', height: '400px' })
       .afterClosed()
       .pipe(filter(response => !!response))
       .subscribe({
-        next: (response) => Object.assign(cellphone, response),
-      })
-      ;
+        next: response => Object.assign(cellphone, response),
+      });
   }
 
   addOnList(): void {
     // Permite que a cada inserção, crie um novo objeto Cellphone sem modificar a referência para o `this.cellphone`.
-    const newer = Object.assign(new Cellphone(), this.cellphone);
+    const newer = Object.assign(new Phone(), this.cellphone);
     this._service.add(newer)
       .subscribe(() => this.form.reset());
   }
 
-  remove(cellphone: Cellphone): void {
+  remove(cellphone: Phone): void {
     this._service.remove(cellphone);
   }
 
 }
-

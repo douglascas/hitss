@@ -1,11 +1,23 @@
 <mat-toolbar color="accent" class="header mat-elevation-z2">
-  <ng-container i18n>Projeto</ng-container>
+  <ng-container><span i18n>Projeto</span></ng-container>
+
   <div fxFlex></div>
-  <a mat-mini-fab href="https://github.com/douglascas/" target="_blank" color="default">
-    <mat-icon color="accent" i18n-matTooltip matTooltip="Github">link</mat-icon>
+  <div fxFlexAlign="row" fxLayoutGap="50px">
+    <a routerLink="/home" fxFlex i18n>Início</a>
+    <a routerLink="/galery" fxFlex i18n>Galeria</a>
+    <a routerLink="/about" fxFlex i18n>Sobre</a>
+  </div>
+  <div fxFlex></div>
+
+  <a mat-mini-fab target="_blank" color="default" [matMenuTriggerFor]="loginMenu">
+    <mat-icon color="accent">input</mat-icon>
   </a>
+  <mat-menu #loginMenu="matMenu">
+    <app-login></app-login> 
+  </mat-menu>
+  
 </mat-toolbar>
 
-<section class="content" fxFlex>
-  <router-outlet></router-outlet>
-</section>
+<div style=" padding-top: 64px; margin: 8px;">
+  <router-outlet ></router-outlet>
+</div>
